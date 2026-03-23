@@ -1,4 +1,4 @@
-# Quantum-Walks
+# Quantum-Walks [![Live site](https://img.shields.io/badge/github.io-live-brightgreen)](https://arnavd371.github.io/Quantum-Walks/)
 
 Simulating **continuous-time quantum walks (CTQW)** on dynamic geometric graphs
 and comparing them with classical random walks (CRW) to study computational
