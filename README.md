@@ -73,11 +73,13 @@ cmake -B build && cmake --build build
 
 ---
 
-## Minimal UI (GitHub Pages friendly)
+## Live demo (GitHub Pages ready)
 
-A lightweight, static interface lives in `docs/` so it can be published directly to GitHub Pages.
+A lightweight, static interface lives in `docs/` and can be served straight from GitHub Pages.
 
-- Preview locally: `python -m http.server 8000 -d docs` then open http://localhost:8000/docs/
+- Public URL: https://arnavd371.github.io/Quantum-Walks/
+- Publish it yourself: Settings → Pages → **Deploy from a branch** → choose your default branch and `/docs` as the folder.
+- Preview locally: `python -m http.server 8000 -d docs` then open http://localhost:8000/
 - Regenerate the deterministic presets used by the UI (updates `docs/assets/sample-data.json`):
 
   ```bash
