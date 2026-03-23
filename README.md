@@ -137,6 +137,7 @@ A lightweight, static interface lives in `docs/` so it can be published directly
   PY
   ```
 - Enable Pages in **Settings → Pages**, choose **Deploy from a branch**, then select the branch that contains `docs/` with the `/docs` folder as the source.
+  - Test locally: `python -m http.server 8000 -d docs` then open http://localhost:8000/
 
 ---
 
