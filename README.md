@@ -73,6 +73,73 @@ cmake -B build && cmake --build build
 
 ---
 
+## Minimal UI (GitHub Pages friendly)
+
+A lightweight, static interface lives in `docs/` so it can be published directly to GitHub Pages.
+
+- Preview locally: `python -m http.server 8000 -d docs` then open http://localhost:8000/docs/
+- Regenerate the deterministic presets used by the UI (updates `docs/assets/sample-data.json`):
+
+  ```bash
+  python - <<'PY'
+  import json, numpy as np
+  from quantum_walk import graph, ctqw
+
+  def make_entry(adjacency, label, parameters, description, times):
+      walk = ctqw.CTQW(adjacency)
+      walk.set_initial_state(0)
+      probabilities = [
+          [round(float(p), 6) for p in row] for row in walk.simulate(0, times)
+      ]
+      return {
+          "label": label,
+          "nodes": adjacency.shape[0],
+          "times": [round(float(t), 2) for t in times],
+          "probabilities": probabilities,
+          "parameters": parameters,
+          "description": description,
+      }
+
+  times = np.linspace(0, 3, 5)
+  data = {
+      "grid": make_entry(
+          graph.grid_graph(3, 3)[0],
+          "3x3 Grid",
+          {"rows": 3, "cols": 3},
+          "Uniform lattice illustrating symmetric spread from a corner node.",
+          times,
+      ),
+      "rgg": make_entry(
+          graph.random_geometric_graph(8, 0.55, seed=7)[0],
+          "Random Geometric (n=8, r=0.55)",
+          {"n": 8, "radius": 0.55, "seed": 7},
+          "Spatially random connections with radius-based edges.",
+          times,
+      ),
+      "complete": make_entry(
+          graph.complete_graph(6)[0],
+          "Complete Graph (K6)",
+          {"n": 6},
+          "Fully connected graph reaching fast interference patterns.",
+          times,
+      ),
+      "small_world": make_entry(
+          graph.small_world_graph(10, 4, 0.2, seed=3)[0],
+          "Small-world (n=10, k=4, β=0.2)",
+          {"n": 10, "k": 4, "beta": 0.2, "seed": 3},
+          "Watts–Strogatz ring with shortcuts creating mixed locality.",
+          times,
+      ),
+  }
+
+  with open("docs/assets/sample-data.json", "w", encoding="utf-8") as f:
+      json.dump(data, f, indent=2)
+  PY
+  ```
+- Enable Pages in **Settings → Pages**, choose **Deploy from a branch**, then select the branch that contains `docs/` with the `/docs` folder as the source.
+
+---
+
 ## Physics background
 
 The **continuous-time quantum walk** replaces the stochastic transition matrix
