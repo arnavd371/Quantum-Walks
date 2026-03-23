@@ -14,19 +14,18 @@
   <header class="hero">
     <div class="hero__content">
       <p class="eyebrow">Quantum Walks</p>
-      <h1>Minimalist playground for continuous-time quantum walks.</h1>
+      <h1>Shareable quantum walk playground.</h1>
       <p class="lede">
-        Pick a graph, scrub through time, and see how the probability
-        distribution morphs. Ready to drop into GitHub Pages via the <code>docs/</code> folder.
+        Pick a graph, scrub through time, and watch probabilities change. Hosted directly from the
+        <code>docs/</code> folder so it works on GitHub Pages or any static host.
       </p>
       <div class="hero__actions">
-        <a class="btn primary" href="#playground">Open the UI</a>
+        <a class="btn primary" href="#playground">Open the playground</a>
+        <a class="btn ghost" href="https://arnavd371.github.io/Quantum-Walks/" target="_blank" rel="noopener noreferrer">Live site URL</a>
         <a class="btn ghost" href="https://github.com/arnavd371/Quantum-Walks" target="_blank" rel="noopener noreferrer">View repository</a>
       </div>
       <div class="hero__meta">
-        <span>Built from library presets</span>
-        <span>Static, no backend needed</span>
-        <span>Deterministic sample data</span>
+        <a class="pill" href="https://arnavd371.github.io/Quantum-Walks/" aria-label="Public demo hosted on GitHub Pages" target="_blank" rel="noopener noreferrer">Public demo on GitHub Pages</a>
       </div>
     </div>
   </header>
@@ -37,10 +36,9 @@
         <div class="section-header">
           <div>
             <p class="eyebrow">Controls</p>
-            <h2>Choose a graph preset</h2>
-            <p class="hint">Sample distributions are generated from the Python package for quick previews.</p>
+            <h2>Choose a preset and scrub through time</h2>
+            <p class="hint">Loads instantly from deterministic sample data—no setup required.</p>
           </div>
-          <a class="pill" href="#guide">User guide ↓</a>
         </div>
 
         <label class="field">
@@ -70,11 +68,6 @@
             <p class="label">Parameters</p>
             <p class="value" id="graph-params">–</p>
           </div>
-        </div>
-
-        <div class="inline-actions">
-          <a class="btn subtle" href="assets/sample-data.json" download>Download sample data</a>
-          <a class="btn subtle" href="https://github.com/arnavd371/Quantum-Walks#readme" target="_blank" rel="noopener noreferrer">Full README</a>
         </div>
       </div>
 
@@ -114,82 +107,10 @@
         </div>
       </div>
     </section>
-
-    <section id="guide" class="card guide">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">User guide</p>
-          <h2>How to use the UI & the library</h2>
-        </div>
-        <a class="pill" href="#pages">GitHub Pages setup ↓</a>
-      </div>
-      <ol class="steps">
-        <li>
-          <strong>Explore quickly in the browser.</strong>
-          Use the selector above to toggle between graph presets and scrub the time slider to see interference patterns.
-        </li>
-        <li>
-          <strong>Run your own simulations locally.</strong>
-          <code>python main.py --graph grid --nodes 30 --t-max 10 --save-plots plots/</code>
-          produces fresh plots with your parameters.
-        </li>
-        <li>
-          <strong>Update the presets for this page.</strong>
-          Regenerate <code>docs/assets/sample-data.json</code> with the one-liner in the README.
-        </li>
-        <li>
-          <strong>Keep it lightweight.</strong>
-          Everything here is static, so it works directly from GitHub Pages without a backend.
-        </li>
-      </ol>
-    </section>
-
-    <section id="pages" class="card pages">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Deploy</p>
-          <h2>Host on GitHub Pages</h2>
-          <p class="hint">Pages can serve directly from this <code>docs/</code> folder.</p>
-        </div>
-      </div>
-      <ol class="steps compact">
-        <li>Open <em>Settings → Pages</em> in your repo.</li>
-        <li>Set <strong>Source</strong> to <code>Deploy from a branch</code>, then pick your default branch (e.g. <code>main</code>) and <code>/docs</code> as the folder.</li>
-        <li>Save. Pages will publish to <code>https://&lt;username&gt;.github.io/Quantum-Walks/</code>.</li>
-        <li>To test locally: <code>python -m http.server 8000 -d docs</code> then visit <a href="http://localhost:8000/" target="_blank" rel="noopener noreferrer">localhost:8000/</a>.</li>
-      </ol>
-    </section>
-
-    <section class="card about">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Presets</p>
-          <h2>What you’re seeing</h2>
-        </div>
-      </div>
-      <div class="meta-grid three">
-        <div class="meta-tile">
-          <p class="label">Grid</p>
-          <p class="value">3×3 lattice starting from a corner node; symmetry produces even spread.</p>
-        </div>
-        <div class="meta-tile">
-          <p class="label">Random geometric</p>
-          <p class="value">Spatial edges within radius 0.55 show uneven interference hotspots.</p>
-        </div>
-        <div class="meta-tile">
-          <p class="label">Complete</p>
-          <p class="value">Fully connected K6 rapidly oscillates between concentration and near-uniformity.</p>
-        </div>
-        <div class="meta-tile">
-          <p class="label">Small-world</p>
-          <p class="value">Watts–Strogatz (n=10, k=4, β=0.2) mixes locality and shortcuts for varied spread.</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
-    <p>Quantum Walks · Minimal UI & guide · docs/ served via GitHub Pages</p>
+    <p>Quantum Walks · Static playground served from <code>docs/</code> · Live: <a href="https://arnavd371.github.io/Quantum-Walks/" aria-label="Live site for Quantum Walks on GitHub Pages" target="_blank" rel="noopener noreferrer">arnavd371.github.io/Quantum-Walks/</a></p>
   </footer>
 </body>
 </html>
